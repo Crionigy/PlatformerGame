@@ -39,50 +39,75 @@ public class Playing extends State implements BaseState{
 
     @Override
     public void update() {
-        // TODO Auto-generated method stub
-        
+       levelManager.update();
+       player.update();
     }
 
     @Override
     public void draw(Graphics2D g) {
-        // TODO Auto-generated method stub
-        
+        levelManager.draw(g);
+        player.render(g);
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
+        if(e.getButton() == MouseEvent.BUTTON1) {
+            player.setAttacking(true);
+        }
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
+    public void mousePressed(MouseEvent e) {}
 
     @Override
-    public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
+    public void mouseReleased(MouseEvent e) {}
 
     @Override
-    public void mouseMoved(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
+    public void mouseMoved(MouseEvent e) {}
 
     @Override
     public void keyPressed(KeyEvent e) {
-        // TODO Auto-generated method stub
-        
+        switch(e.getKeyCode()) {
+            case KeyEvent.VK_W:
+                player.getMovement().setMovingUp(true);
+                break;
+            case KeyEvent.VK_A:
+                player.getMovement().setMovingLeft(true);
+                break;
+            case KeyEvent.VK_S:
+                player.getMovement().setMovingDown(true);
+                break;
+            case KeyEvent.VK_D:
+                player.getMovement().setMovingRight(true);
+                break;
+            case KeyEvent.VK_SPACE:
+                player.getMovement().setJumping(true);
+                break;
+            case KeyEvent.VK_BACK_SPACE:
+                GameState.state = GameState.MENU;
+                break;
+        }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        // TODO Auto-generated method stub
-        
+        switch(e.getKeyCode()) {
+            case KeyEvent.VK_W:
+                player.getMovement().setMovingUp(false);
+                break;
+            case KeyEvent.VK_A:
+                player.getMovement().setMovingLeft(false);
+                break;
+            case KeyEvent.VK_S:
+                player.getMovement().setMovingDown(false);
+                break;
+            case KeyEvent.VK_D:
+                player.getMovement().setMovingRight(false);
+                break;
+            case KeyEvent.VK_SPACE:
+                player.getMovement().setJumping(false);
+                break;
+        }
     }
     
 }

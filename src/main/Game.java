@@ -43,7 +43,8 @@ public class Game implements Runnable{
     }
 
     private void initClasses() {
-
+        menu = new Menu(this);
+        playing = new Playing(this);
     }
 
     private void startGameLoop() {
@@ -53,25 +54,27 @@ public class Game implements Runnable{
 
     public void update() {
         switch(GameState.state) {
-            case Menu:
+            case MENU:
+                menu.update();
                 break;
-            case Playing:
+            case PLAYING:
+                playing.update();
                 break;
             default:
                 break;
-            
         }
     }
 
     public void render(Graphics2D g) {
         switch(GameState.state) {
-            case Menu:
+            case MENU:
+                menu.draw(g);
                 break;
-            case Playing:
+            case PLAYING:
+                playing.draw(g);
                 break;
             default:
-                break;
-            
+                break;   
         }
     }
 
@@ -110,6 +113,16 @@ public class Game implements Runnable{
     }
 
     public void windowLostFocus() {
-        
+        if(GameState.state == GameState.PLAYING) {
+            playing.getPlayer().getMovement().stopMoving();
+        }
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public Playing getPlaying() {
+        return playing;
     }
 }

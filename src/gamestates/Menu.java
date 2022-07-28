@@ -1,5 +1,6 @@
 package gamestates;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
@@ -13,51 +14,40 @@ public class Menu extends State implements BaseState {
     }
 
     @Override
-    public void update() {
-        // TODO Auto-generated method stub
-        
+    public void update() {     
     }
 
     @Override
     public void draw(Graphics2D g) {
-        // TODO Auto-generated method stub
-        
+        g.setColor(Color.BLACK);
+        g.drawString("MENU", Game.GAME_WIDTH / 2, 200);
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
+    public void mouseClicked(MouseEvent e) {     
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
+    public void mousePressed(MouseEvent e) {     
     }
 
     @Override
-    public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
+    public void mouseReleased(MouseEvent e) {     
     }
 
     @Override
-    public void mouseMoved(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
+    public void mouseMoved(MouseEvent e) {     
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        // TODO Auto-generated method stub
-        
+        if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+            GameState.state = GameState.PLAYING;
+        }
     }
 
     @Override
-    public void keyReleased(KeyEvent e) {
-        // TODO Auto-generated method stub
-        
+    public void keyReleased(KeyEvent e) {     
     }
     
 }
