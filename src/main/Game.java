@@ -79,7 +79,7 @@ public class Game implements Runnable{
     }
 
     @Override
-    public void run() {       
+    public void run() {
         gMetrics.setPreviousTime(System.nanoTime());
         gMetrics.setLastCheck(System.currentTimeMillis());
 
